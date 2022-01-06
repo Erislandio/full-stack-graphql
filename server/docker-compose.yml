@@ -1,0 +1,26 @@
+
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: eris
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: "todos"
+    ports:
+      - 5432:5432
+
+  cache: 
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
