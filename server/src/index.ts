@@ -6,6 +6,7 @@ import ormConfigs from './mikro-orm.config';
 import { buildSchema } from "type-graphql";
 import { HelloResolver } from './resolvers/hello';
 import { TodoResolver } from './resolvers/todoResolver';
+import cors from 'cors';
 
 async function main() {
 
@@ -13,6 +14,7 @@ async function main() {
     await orm.getMigrator().up();
 
     const app = express();
+    app.use(cors());
 
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
